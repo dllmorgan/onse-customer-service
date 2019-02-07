@@ -8,7 +8,6 @@ def update_customer(context, customer_id, new_surname):
 
     response = context.web_client.post(
         '/customers/update/' + str(customer_id) + '/' + new_surname)
-        #json={'surname': new_surname, 'customer_id': customer_id})
 
     body = response.get_json()
     assert f"{body['surname']}" == new_surname
