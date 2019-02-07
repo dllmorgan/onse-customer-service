@@ -49,26 +49,17 @@ def create_customer():
                    surname=customer.surname), HTTPStatus.CREATED
 
 
-@customers.route('/update/<string:customer_id>/<string:surname>', methods=['POST'])
+@customers.route('/update/<string:customer_id>/<string:surname>',
+                 methods=['POST'])
 def update_customer(customer_id, surname):
 
     customer_repository = current_app.customer_repository
-
-    #if not request.is_json:
-    #    raise ContentTypeError()
-
-    # body = request.get_json()
-    # print(body)
-    #CREATE_PAYLOAD_SCHEMA.validate(body)
 
     customer = commands.get_customer(
         customer_id=int(customer_id),
         customer_repository=customer_repository)
 
     customer.surname = surname
-
-    #customer = Customer(customer_id=body['customer_id'],
-    #                    surname=body['surname'])
 
     commands.update_customer(
         customer=customer,

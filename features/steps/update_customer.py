@@ -1,7 +1,4 @@
-from behave import when, then, given
-
-from customer_service.model.customer import Customer
-
+from behave import when
 
 @when(u'I update customer "{customer_id:d}" surname to "{new_surname}"')
 def update_customer(context, customer_id, new_surname):
